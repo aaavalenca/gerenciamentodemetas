@@ -1,11 +1,11 @@
-import { Aluno } from 'common/aluno';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AlunoComponent } from './aluno/aluno.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AlunoComponent } from './aluno/aluno.component'
+import { AlunoService } from './aluno/aluno.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ imports: [
   AppRoutingModule,
   FormsModule
 ],
-providers: [],
+
+providers: [AlunoService],
 bootstrap: [AppComponent]
 })
 export class AppModule { }
