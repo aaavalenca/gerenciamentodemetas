@@ -10,6 +10,7 @@
  <tr>
     <td><label>Nome </label></td>
     <td><input [(ngModel)]="aluno.nome" ></td>
+    <td><button (click)="gravar(aluno)">Adicionar</button></td>
  </tr>
  <tr>
     <td><label>CPF </label></td>
@@ -18,5 +19,6 @@
  <tr>
     <td><label>e-mail </label></td>
     <td><input [(ngModel)]="aluno.email" ></td>
+    <td><input type="file" (change)="onFileChange($event)" multiple="false" accept='.csv'></td>
  </tr>
  </table>

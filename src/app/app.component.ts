@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title: string = 'gerenciament-de-metas';
   aluno: Aluno = {nome: "", cpf: "", email: ""};
 }
 
