@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Aluno } from 'common/aluno';
 
 @Component({
   selector: 'app-aluno',
@@ -6,19 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aluno.component.css']
 })
 export class AlunoComponent implements OnInit {
-  nome: string;
-  cpf: string;
-  email: string;
-  metas: Map<string,string>;
 
-  constructor() {
-    this.nome = "";
-    this.cpf = "";
-    this.email = "";
-    this.metas = new Map<string,string>();
-   }
+  aluno: Aluno = new Aluno();
 
   ngOnInit(): void {
+
   }
+
+  criar(aluno : Aluno){
+
+  }
+
+  onFileChange (event) {
+
+  }
+
 
 }
