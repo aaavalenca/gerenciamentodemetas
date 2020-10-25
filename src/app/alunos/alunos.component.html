@@ -1,20 +1,37 @@
-   <h1>
-    Alunos
-  </h1>
-  
+<html (mousemove)="onMove()">
+
   <table>
-  <tr>
-     <td><label>Nome </label></td>
-     <td><input [(ngModel)]="aluno.nome" ></td>
-     <td><button (click)="criar(aluno)">Adicionar</button></td>
-  </tr>
-  <tr>
-     <td><label>CPF </label></td>
-     <td><input [(ngModel)]="aluno.cpf" ></td>
-  </tr>
-  <tr>
-     <td><label>e-mail </label></td>
-     <td><input [(ngModel)]="aluno.email" ></td>
-     <td><input type="file" (change)="onFileChange($event)" multiple="false" accept='.csv'></td>
-  </tr>
-  </table>
+ <tr>
+    <td><label>Nome </label></td>
+    <td><input [(ngModel)]="aluno.nome" name="namebox"></td>
+    <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
+ </tr>
+ <tr>
+    <td><label>CPF </label></td>
+    <td><input [(ngModel)]="aluno.cpf" name="cpfbox"></td>
+    <td name="msgcpfexistente" *ngIf="cpfduplicado">
+      Já existe um aluno com esse CPF
+    </td>
+ </tr>
+ <tr>
+    <td><label>e-mail </label></td>
+    <td><input [(ngModel)]="aluno.email" ></td>
+ </tr>
+ </table>
+
+  <table>
+ <tr *ngIf="alunos.length > 0">
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>e-mail</th>
+    <th>Github</th>
+ </tr>
+ <tr *ngFor="let a of alunos" name="alunolist">
+    <td name="nomelist">{{a.nome}}</td>
+    <td name="cpflist">{{a.cpf}}</td>
+    <td>{{a.email}}</td>
+    <td><button (click)="removerAluno(a.cpf)" name = 'x'> X </button></td>
+ </tr>
+ </table>
+
+  </html>
