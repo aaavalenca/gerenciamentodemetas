@@ -4,7 +4,7 @@ import bodyParser = require("body-parser");
 import {Aluno} from '../common/aluno';
 import {CadastroDeAlunos} from './cadastrodealunos';
 
-var taserver = express();
+var gmserver = express();
 var cadastro : CadastroDeAlunos = new CadastroDeAlunos();
 
 var allowCrossDomain = function (req: any, res: any, next: any) {
@@ -14,16 +14,15 @@ var allowCrossDomain = function (req: any, res: any, next: any) {
     next();
 };
 
-taserver.use(allowCrossDomain);
-taserver.use(bodyParser.json());
+gmserver.use(allowCrossDomain);
+gmserver.use(bodyParser.json());
 
-taserver.get('/alunos', function (req: express.Request, res: express.Response) {
+gmserver.get('/alunos', function (req: express.Request, res: express.Response) {
     res.send(JSON.stringify(cadastro.getAlunos()));
 });
 
-taserver.post('/aluno', function (req: express.Request, res: express.Response) {
+gmserver.post('/aluno', function (req: express.Request, res: express.Response) {
     var aluno: Aluno = <Aluno> req.body;
-    console.log(aluno);
     aluno = cadastro.cadastrar(aluno);
     if (aluno) {
         res.send({ "success": "O aluno foi cadastrado com sucesso" });
@@ -33,7 +32,7 @@ taserver.post('/aluno', function (req: express.Request, res: express.Response) {
     }
 });
 
-taserver.put('/aluno', function (req: express.Request, res: express.Response) {
+gmserver.put('/aluno', function (req: express.Request, res: express.Response) {
     var aluno: Aluno = <Aluno> req.body;
     aluno = cadastro.atualizar(aluno);
     if (aluno) {
@@ -44,7 +43,7 @@ taserver.put('/aluno', function (req: express.Request, res: express.Response) {
     }
 });
 
-taserver.delete('/aluno/:cpf', function (req: express.Request, res: express.Response) {
+gmserver.delete('/aluno/:cpf', function (req: express.Request, res: express.Response) {
     var cpf : string = req.params.cpf;
     var aluno : Aluno = cadastro.remover(cpf);
     if (aluno) {
@@ -54,7 +53,7 @@ taserver.delete('/aluno/:cpf', function (req: express.Request, res: express.Resp
     }
 );
 
-var server = taserver.listen(3000, function () {
+var server = gmserver.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 })
 
