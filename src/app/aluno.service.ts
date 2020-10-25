@@ -9,12 +9,12 @@ import { Aluno } from '../../common/aluno';
 export class AlunoService {
 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
-  private taURL = 'http://localhost:3000';
+  private gmURL = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
   criar(aluno: Aluno): Observable<Aluno> {
-    return this.http.post<any>(this.taURL + "/aluno", aluno, {headers: this.headers})
+    return this.http.post<any>(this.gmURL + "/aluno", aluno, {headers: this.headers})
              .pipe( 
                 retry(2),
                 map( res => {if (res.success) {return aluno;} else {return null;}} )
@@ -22,14 +22,14 @@ export class AlunoService {
   }
 
   atualizar(aluno: Aluno): Observable<Aluno> {
-    return this.http.put<any>(this.taURL + "/aluno",JSON.stringify(aluno), {headers: this.headers})          .pipe( 
+    return this.http.put<any>(this.gmURL + "/aluno",JSON.stringify(aluno), {headers: this.headers})          .pipe( 
                 retry(2),
                 map( res => {if (res.success) {return aluno;} else {return null;}} )
               ); 
   }
 
   getAlunos(): Observable<Aluno[]> {
-    return this.http.get<Aluno[]>(this.taURL + "/alunos")
+    return this.http.get<Aluno[]>(this.gmURL + "/alunos")
               .pipe(
                  retry(2)
                );
