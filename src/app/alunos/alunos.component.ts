@@ -29,8 +29,12 @@ import { Component, OnInit } from '@angular/core';
        this.cpfduplicado = false;
     }
 
-     ngOnInit(): void {
-      this.alunos = this.alunoService.getAlunos();
+    ngOnInit(): void {
+      this.alunoService.getAlunos()
+            .subscribe(
+              as => { this.alunos = as; },
+              msg => { alert(msg.message); }
+             );
     }
 
   onFileChange (event) {
