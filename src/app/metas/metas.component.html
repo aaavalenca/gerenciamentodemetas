@@ -1,20 +1,28 @@
 <table>
-    <tr>
-       <th>Nome</th>
-       <th>CPF</th>
-       <th>e-mail</th>
-       <th>Requisitos</th>
-       <th>Gerência de Configuração</th>
-       <th>Gerência de Projetos</th>
-       <th>Testes</th>
-    </tr>
-    <tr *ngFor="let a of alunos">
-       <td>{{a.nome}}</td>
-       <td>{{a.cpf}}</td>
-       <td>{{a.email}}</td>
-       <td class="meta"><input [(ngModel)]="a.metas['requisitos']" (change)="atualizarAluno(a)"></td>
-       <td class="meta"><input [(ngModel)]="a.metas['gerDeConfiguracao']" (change)="atualizarAluno(a)"></td>
-       <td class="meta"><input [(ngModel)]="a.metas['gerDeProjetos']" (change)="atualizarAluno(a)"></td>
-       <td class="meta"><input [(ngModel)]="a.metas['testes']" (change)="atualizarAluno(a)"></td>
-    </tr>
+   <div class="table-wrapper">
+      <table class="fl-table">
+          <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">EE1</th>
+            <th scope="col">EE2</th>
+            <th scope="col">EE3</th>
+            <th scope="col">Média</th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let a of alunos">
+           <td>{{a.nome}}</td>
+           <td>{{a.cpf}}</td>
+           <td>{{a.email}}</td>
+           <td class="meta"><input [(ngModel)]="a.metas['EE1']" (change)="atualizarAluno(a)"></td>
+           <td class="meta"><input [(ngModel)]="a.metas['EE2']" (change)="atualizarAluno(a)"></td>
+           <td class="meta"><input [(ngModel)]="a.metas['EE3']" (change)="atualizarAluno(a)"></td>
+           <td class="meta"><input [(ngModel)]="a.metas['Media']" (change)="atualizarAluno(a)"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
     </table>

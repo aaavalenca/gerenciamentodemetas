@@ -1,0 +1,22 @@
+{
+  "name": "gm-server",
+  "version": "0.0.2",
+  "description": "Servidor do gerenciador de metas",
+  "main": "gm-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "start": "npm run tsc && node compiledCode/gm-server/gm-server.js"
+  },
+  "author": "Mateus Nascimento",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "@types/express": "^4.0.37",
+    "body-parser": "^1.18.2",
+    "@types/body-parser": "^1.16.5"
+  },
+  "devDependencies": {
+    "typescript": "~3.5.3"
+  }
+}

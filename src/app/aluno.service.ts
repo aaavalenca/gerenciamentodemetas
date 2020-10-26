@@ -28,6 +28,14 @@ export class AlunoService {
               ); 
   }
 
+  remover (cpf: string): Observable<Aluno> {
+    const url = `${this.gmURL}/aluno/${cpf}`;
+    return this.http.delete<any>(url)
+      .pipe(
+        retry(2)
+      );
+  }
+
   getAlunos(): Observable<Aluno[]> {
     return this.http.get<Aluno[]>(this.gmURL + "/alunos")
               .pipe(
