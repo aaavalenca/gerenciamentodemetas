@@ -17,6 +17,13 @@ constructor() {
   return aluno;
 }
 
+clear(): void {
+  this.nome = "";
+  this.cpf = "";
+  this.email = "";
+  this.metas = new Map<string,string>();
+}
+
 copyFrom(from: Aluno): void {
   this.nome = from.nome;
   this.cpf = from.cpf;

@@ -12,6 +12,12 @@ class Aluno {
         aluno.copyFrom(this);
         return aluno;
     }
+    clear() {
+        this.nome = "";
+        this.cpf = "";
+        this.email = "";
+        this.metas = new Map();
+    }
     copyFrom(from) {
         this.nome = from.nome;
         this.cpf = from.cpf;

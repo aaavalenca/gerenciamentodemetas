@@ -12,10 +12,16 @@ import { AlunoService } from '../aluno.service';
     aluno: Aluno = new Aluno();
     alunos: Aluno[] = [];
     cpfduplicado: boolean = false;
+    emailinvalido = false;
+    campovazio = false;
+    cpfinvalido = false;
 
     constructor(private alunoService: AlunoService) {}
 
      criarAluno(a: Aluno): void {
+       if (this.checkAluno(a) == null){
+        a.clear();
+       } else{
        this.alunoService.criar(a)
               .subscribe(
                 ar => {
@@ -28,9 +34,23 @@ import { AlunoService } from '../aluno.service';
                 },
                 msg => { alert(msg.message); }
               );
+            }
     } 
 
-    removerAlunos(cpf: string): void {
+    checkAluno(a: Aluno): Aluno {
+      if (a.nome === "" || a.cpf === "" || a.email === "") {
+        this.campovazio = true;
+      } else if (!a.email.includes("@")){
+        this.emailinvalido = true;
+      } else if (isNaN(a.cpf as any)){
+        this.cpfinvalido = true;
+      } else {
+        return a;
+      }
+      return null;
+    } 
+
+    removerAluno(cpf: string): void {
       this.alunoService.removerAlunos(cpf)
              .subscribe(
                as => {
@@ -42,6 +62,9 @@ import { AlunoService } from '../aluno.service';
 
     onMove(): void {
        this.cpfduplicado = false;
+       this.emailinvalido = false;
+       this.campovazio = false;
+       this.cpfinvalido = false;
     }
 
      ngOnInit(): void {
