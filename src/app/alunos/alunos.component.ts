@@ -50,7 +50,7 @@ import { AlunoService } from '../aluno.service';
       return null;
     } 
 
-    removerAlunos(cpf: string): void {
+    removerAluno(cpf: string): void {
       this.alunoService.removerAlunos(cpf)
              .subscribe(
                as => {
