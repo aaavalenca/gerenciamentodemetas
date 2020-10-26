@@ -28,7 +28,17 @@ import { AlunoService } from '../aluno.service';
                 },
                 msg => { alert(msg.message); }
               );
-    } 
+    }
+    
+    removerAluno(cpf: string): void {
+      this.alunoService.remover(cpf)
+      .subscribe(
+        ar => {
+          this.alunos = this.alunos.filter(a=> a.cpf !== cpf)
+        },
+        msg => {alert(msg.message);}
+      );
+    }
 
     onMove(): void {
        this.cpfduplicado = false;
