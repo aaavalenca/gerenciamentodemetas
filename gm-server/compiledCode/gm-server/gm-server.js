@@ -18,7 +18,6 @@ gmserver.get('/alunos', function (req, res) {
 });
 gmserver.post('/aluno', function (req, res) {
     var aluno = req.body;
-    console.log(aluno);
     aluno = cadastro.cadastrar(aluno);
     if (aluno) {
         res.send({ "success": "O aluno foi cadastrado com sucesso" });

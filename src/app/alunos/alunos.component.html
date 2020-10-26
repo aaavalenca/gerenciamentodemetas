@@ -12,10 +12,19 @@
     <td name="msgcpfexistente" *ngIf="cpfduplicado">
       Já existe um aluno com esse CPF
     </td>
+    <td name="msgcpfinvalido" *ngIf="cpfinvalido">
+      O CPF é composto apenas por números
+    </td>    
  </tr>
  <tr>
     <td><label>e-mail </label></td>
     <td><input [(ngModel)]="aluno.email" ></td>
+    <td name="msgemailinvalido" *ngIf="emailinvalido">
+      Um email válido contém "@"
+    </td>
+    <td name="msgcampovazio" *ngIf="campovazio">
+      Há um ou mais campos vazios
+    </td>
  </tr>
  </table>
 
