@@ -30,6 +30,16 @@ import { AlunoService } from '../aluno.service';
               );
     } 
 
+    removerAluno(cpf: string): void {
+      this.alunoService.removerAlunos(cpf)
+             .subscribe(
+               as => {
+               this.alunos = this.alunos.filter(a => a.cpf !== cpf)
+            },
+               msg => { alert(msg.message); }
+             );
+   }
+
     onMove(): void {
        this.cpfduplicado = false;
     }
