@@ -1,3 +1,4 @@
+import { MetasComponent } from './../metas/metas.component';
 import { Component, OnInit } from '@angular/core';
 import { Aluno } from '../../../common/aluno';
 import { AlunoService } from '../aluno.service';
@@ -15,8 +16,10 @@ import { AlunoService } from '../aluno.service';
     emailinvalido = false;
     campovazio = false;
     cpfinvalido = false;
+    metasComponent: MetasComponent = new MetasComponent(this.alunoService);
 
     constructor(private alunoService: AlunoService) {}
+
 
      criarAluno(a: Aluno): void {
        if (this.checkAluno(a) == null){
@@ -51,7 +54,7 @@ import { AlunoService } from '../aluno.service';
     } 
 
     removerAluno(cpf: string): void {
-      this.alunoService.removerAlunos(cpf)
+      this.alunoService.removerAluno(cpf)
              .subscribe(
                as => {
                this.alunos = this.alunos.filter(a => a.cpf !== cpf)
@@ -74,5 +77,34 @@ import { AlunoService } from '../aluno.service';
                msg => { alert(msg.message); }
               );
      }
+
+     tratarCsv(csv : string){
+      let paragraph = csv.split('\r');
+      let data: string[];
+      let p = paragraph[0].split(";");
+      
+      for (let i = 1; i < paragraph.length; i++){
+        let aluno = new Aluno();
+        data = paragraph[i].split(';');
+        aluno.nome = data[0];
+        aluno.cpf = data[1];
+        aluno.email = data[2];
+        this.criarAluno(aluno);
+        for (let j = 3; j < p.length; j++){
+          aluno.metas[p[j]] = data[j];
+        }
+        this.metasComponent.atualizarAluno(aluno);
+      }
+    }
+  
+    onFileChange (event) {
+    const file = event.srcElement.files[0];
+    const reader = new FileReader();
+    reader.readAsText(file)
+    reader.onload = (e: any)=> {
+      const csv : string = e.target.result;
+      this.tratarCsv(csv);
+    }
+    }
 
   }

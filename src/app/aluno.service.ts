@@ -43,7 +43,7 @@ export class AlunoService {
                );
   }
 
-  removerAlunos(cpf: string): Observable<Aluno>  {
+  removerAluno(cpf: string): Observable<Aluno>  {
     const url = `${this.gmURL}/aluno/${cpf}`;
     return this.http.delete<Aluno>(url)
               .pipe(
