@@ -1,9 +1,10 @@
 import { defineSupportCode } from 'cucumber';
 import { request } from 'http';
-import { browser, $, element, ElementArrayFinder, by, promise } from 'protractor';
+import { browser, $, element, ElementArrayFinder, by, promise, ElementFinder } from 'protractor';
 
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
+let path = require("path");
 
 let sameCPF = ((elem: any, cpf:any) => elem.element(by.name('cpflist')).getText().then((text : string) => text === cpf));
 
@@ -22,8 +23,9 @@ defineSupportCode(function ({ Given, When, Then }) {
     });
 
     When(/^I upload a spreadsheet containing my students$/, async () => {
-        await $("input[name='uploadbutton']").change();
-        // await .attach_file('file', '/Users/andre/Desktop/gerenciamentodemetas/gerenciamentodemetas/tests-acceptance/planilha.csv');
+        var fileToUpload = "../planilha.csv";
+        var absolutePath = path.resolve(__dirname, fileToUpload);
+        await element(by.name("uploadbutton")).sendKeys(absolutePath);
     });
 
     Then(/^I can see a student with CPF "(\d*)" in the students list$/, async (cpf:string) => {
