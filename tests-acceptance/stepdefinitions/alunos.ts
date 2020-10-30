@@ -30,7 +30,7 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     Then(/^I can see a student with CPF "(\d*)" in the students list$/, async (cpf:string) => {
         var allalunos : ElementArrayFinder = element.all(by.name('alunolist'));
-        await allalunos.filter(elem => sameCPF(elem,cpf)).then
-                   (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await expect(allalunos.filter(elem => sameCPF(elem,cpf)).then
+                   (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1)));
     });
 })
