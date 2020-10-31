@@ -1,14 +1,14 @@
 {
   "name": "gm-server",
   "version": "0.0.2",
-  "description": "Servidor do gerenciador de metas",
+  "description": "Servidor do teaching assistant",
   "main": "gm-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run tsc && jasmine --config=./spec/support/jasmine.json",
     "tsc": "./node_modules/typescript/bin/tsc",
     "start": "npm run tsc && node compiledCode/gm-server/gm-server.js"
   },
-  "author": "Mateus Nascimento",
+  "author": "Andre Valenca e Mateus Nascimento",
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.4",
@@ -17,6 +17,8 @@
     "@types/body-parser": "^1.16.5"
   },
   "devDependencies": {
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "jasmine": "^2.8.0",
+    "@types/jasmine": "^2.8.9"
   }
 }
