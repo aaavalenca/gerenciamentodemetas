@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const cadastrodealunos_1 = require("../cadastrodealunos");
 const aluno_1 = require("../../common/aluno");
-describe("O cadastro de alunos", () => {
+fdescribe("O cadastro de alunos", () => {
     var cadastro;
     function cadastrarAluno(nome, cpf, email) {
         var aluno = new aluno_1.Aluno();
@@ -27,7 +27,6 @@ describe("O cadastro de alunos", () => {
     it("não aceita alunos com CPF duplicado", () => {
         cadastrarAluno("Andre", "093", "aaav@cin.ufpe.br");
         cadastrarAluno("Mateus", "093", "mfarn@cin.ufpe.br");
-        console.log(cadastro.getAlunos().length);
         expect(cadastro.getAlunos().length).toBe(1);
     });
     it("não aceita alunos com campo de nome vazio", () => {
