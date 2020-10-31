@@ -6,6 +6,7 @@ class Aluno {
         this.cpf = "";
         this.email = "";
         this.metas = new Map();
+        this.media = "";
     }
     clone() {
         var aluno = new Aluno();
@@ -17,12 +18,14 @@ class Aluno {
         this.cpf = "";
         this.email = "";
         this.metas = new Map();
+        this.media = "";
     }
     copyFrom(from) {
         this.nome = from.nome;
         this.cpf = from.cpf;
         this.email = from.email;
         this.copyMetasFrom(from.metas);
+        this.media = from.media;
     }
     copyMetasFrom(from) {
         this.metas = new Map();

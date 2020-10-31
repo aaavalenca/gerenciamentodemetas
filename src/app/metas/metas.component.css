@@ -61,6 +61,21 @@ h2{
     background: #F8F8F8;
 }
 
+.status[data-status="postponed"]:after {
+    content : "REPROVADO";
+    color : red     
+}
+
+.status[data-status="to do"]:after {
+    content : "FINAL";
+    color : orange
+}
+   
+.status[data-status="to do"]:after {
+    content : "APROVADO";
+    color : green
+}
+
 /* Responsive */
 
 @media (max-width: 767px) {

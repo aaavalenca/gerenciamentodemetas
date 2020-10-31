@@ -3,12 +3,14 @@ nome: string;
 cpf: string;
 email: string;
 metas: Map<string,string>;
+media: string;
 
 constructor() {
   this.nome = "";
   this.cpf = "";
   this.email = "";
   this.metas = new Map<string,string>();
+  this.media = "";
  }
 
  clone(): Aluno {
@@ -22,6 +24,7 @@ clear(): void {
   this.cpf = "";
   this.email = "";
   this.metas = new Map<string,string>();
+  this.media = "";
 }
 
 copyFrom(from: Aluno): void {
@@ -29,6 +32,7 @@ copyFrom(from: Aluno): void {
   this.cpf = from.cpf;
   this.email = from.email;
   this.copyMetasFrom(from.metas);
+  this.media = from.media;
 }
 
 copyMetasFrom(from: Map<string,string>): void {

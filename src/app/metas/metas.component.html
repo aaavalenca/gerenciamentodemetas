@@ -9,6 +9,8 @@
             <th scope="col">EE1</th>
             <th scope="col">EE2</th>
             <th scope="col">EE3</th>
+            <th scope="col">EE4</th>
+            <th scope="col">EE5</th>
             <th scope="col">Média</th>
           </tr>
         </thead>
@@ -20,7 +22,10 @@
            <td class="meta"><input [(ngModel)]="a.metas['EE1']" (change)="atualizarAluno(a)"></td>
            <td class="meta"><input [(ngModel)]="a.metas['EE2']" (change)="atualizarAluno(a)"></td>
            <td class="meta"><input [(ngModel)]="a.metas['EE3']" (change)="atualizarAluno(a)"></td>
-           <td class="meta"><input [(ngModel)]="a.metas['Media']" (change)="atualizarAluno(a)"></td>
+           <td class="meta"><input [(ngModel)]="a.metas['EE4']" (change)="atualizarAluno(a)"></td>
+           <td class="meta"><input [(ngModel)]="a.metas['EE5']" (change)="atualizarAluno(a)"></td>
+           <td class="media"><input [(ngModel)]="a.media" (change)="atualizarAluno(a)"></td>
+           <td><button (click)="mediaAluno(a)" name = "calcularMedia"> Media </button></td>
         </tr>
         </tbody>
       </table>

@@ -2,6 +2,8 @@ import { MetasComponent } from './../metas/metas.component';
 import { Component, OnInit } from '@angular/core';
 import { Aluno } from '../../../common/aluno';
 import { AlunoService } from '../aluno.service';
+import { AstMemoryEfficientTransformer, Type } from '@angular/compiler';
+import { keyframes } from '@angular/animations';
 
   @Component({
    selector: 'app-root',
@@ -20,8 +22,8 @@ import { AlunoService } from '../aluno.service';
 
     constructor(private alunoService: AlunoService) {}
 
-
      criarAluno(a: Aluno): void {
+      alert("cheguei em criar aluno")
        if (this.checkAluno(a) == null){
         a.clear();
        } else{
@@ -51,17 +53,7 @@ import { AlunoService } from '../aluno.service';
         return a;
       }
       return null;
-    } 
-
-    removerAluno(cpf: string): void {
-      this.alunoService.removerAluno(cpf)
-             .subscribe(
-               as => {
-               this.alunos = this.alunos.filter(a => a.cpf !== cpf)
-            },
-               msg => { alert(msg.message); }
-             );
-   }
+    }
 
     onMove(): void {
        this.cpfduplicado = false;
