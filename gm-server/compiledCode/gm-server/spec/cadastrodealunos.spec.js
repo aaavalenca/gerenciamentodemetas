@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const cadastrodealunos_1 = require("../cadastrodealunos");
 const aluno_1 = require("../../common/aluno");
-fdescribe("O cadastro de alunos", () => {
+// adiciona o f na frente de describe (fdescribe) para testar apenas ele
+describe("O cadastro de alunos", () => {
     var cadastro;
     function cadastrarAluno(nome, cpf, email) {
         var aluno = new aluno_1.Aluno();

@@ -2,8 +2,8 @@ import { CadastroDeAlunos } from '../cadastrodealunos';
 import { Aluno } from '../../common/aluno';
 
 
-// adiciona o f na frente de describe para testar apenas ele
-fdescribe("O cadastro de alunos", () => {
+// adiciona o f na frente de describe (fdescribe) para testar apenas ele
+describe("O cadastro de alunos", () => {
   var cadastro: CadastroDeAlunos;
 
   function cadastrarAluno(nome:string, cpf:string, email:string) {
