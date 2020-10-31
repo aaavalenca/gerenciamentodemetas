@@ -5,13 +5,22 @@ export class CadastroDeAlunos {
 
    cadastrar(aluno: Aluno) {
     var result = null;
-    if (this.cpfNaoCadastrado(aluno.cpf)) {
+    if (this.checkAluno(aluno) && this.cpfNaoCadastrado(aluno.cpf)) {
         result = new Aluno();
         result.copyFrom(aluno);
         this.alunos.push(result);
     }
     return result;
 }
+
+checkAluno(a: Aluno): boolean {
+    if (a.nome === "" || a.cpf === "" || a.email === "" ||!a.email.includes("@") || isNaN(a.cpf as any)) {
+        return false;
+    } else {
+        return true;
+    }
+  }
+
 
 cpfNaoCadastrado(cpf: string) {
     return !this.alunos.find(a => a.cpf == cpf);

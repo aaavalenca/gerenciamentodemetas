@@ -25,7 +25,7 @@ import { AlunoService } from '../aluno.service';
        if (this.checkAluno(a) == null){
         a.clear();
        } else{
-       this.alunoService.criar(a)
+       this.alunoService.criar(a) 
               .subscribe(
                 ar => {
                   if (ar) {
