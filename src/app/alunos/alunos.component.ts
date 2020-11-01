@@ -23,7 +23,6 @@ import { keyframes } from '@angular/animations';
     constructor(private alunoService: AlunoService) {}
 
      criarAluno(a: Aluno): void {
-      alert("cheguei em criar aluno")
        if (this.checkAluno(a) == null){
         a.clear();
        } else{
