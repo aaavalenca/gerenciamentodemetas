@@ -23,6 +23,7 @@ import { AlunoService } from '../aluno.service';
 
     checkMetas(a: Aluno): Aluno {
       for (let k in a.metas) {
+        console.log(a.metas);
         if (a.metas[k] !== "MA" && a.metas[k] !== "MPA" && a.metas[k] !== "MANA"){
           return null
         }

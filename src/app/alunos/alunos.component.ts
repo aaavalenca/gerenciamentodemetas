@@ -99,4 +99,14 @@ import { keyframes } from '@angular/animations';
     }
     }
 
+    removerAluno(cpf: string): void {	
+      this.alunoService.removerAluno(cpf)	
+             .subscribe(	
+               as => {	
+               this.alunos = this.alunos.filter(a => a.cpf !== cpf)	
+            },	
+               msg => { alert(msg.message); }	
+             );	
+   }
+
   }
