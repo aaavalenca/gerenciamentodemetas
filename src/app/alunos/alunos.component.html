@@ -29,7 +29,7 @@
  <tr>
     <td></td><td></td><td>Ou faça o upload de uma planilha CSV:</td>
  </tr>
- <tr><td></td><td></td><td><input type="file" (change)="onFileChange($event)" multiple="false" accept='.csv'></td></tr>
+ <tr><td></td><td></td><td><input type="file" name="uploadbutton" (change)="onFileChange($event)" multiple="false" accept='.csv'></td></tr>
  </table>
   <table>
  <tr *ngIf="alunos.length > 0">
