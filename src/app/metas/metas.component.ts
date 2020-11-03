@@ -81,9 +81,11 @@ import { AlunoService } from '../aluno.service';
     }
     }
 
-    mediaAluno(a: Aluno) : void {
-         a.media = this.calcMedia(a)
-         this.atualizarAluno(a)
+    mediaAluno() : void {
+      for (let i = 0; i < this.alunos.length; i ++){
+        this.alunos[i].media = this.calcMedia(this.alunos[i]);
+        this.atualizarAluno(this.alunos[i]);
+      }
     }
 
     ngOnInit(): void {

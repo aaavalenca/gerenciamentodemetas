@@ -15,19 +15,19 @@
           </tr>
         </thead>
         <tbody>
-         <tr *ngFor="let a of alunos">
-           <td>{{a.nome}}</td>
-           <td>{{a.cpf}}</td>
-           <td>{{a.email}}</td>
-           <td class="meta"><input [(ngModel)]="a.metas['EE1']" (change)="atualizarAluno(a)"></td>
-           <td class="meta"><input [(ngModel)]="a.metas['EE2']" (change)="atualizarAluno(a)"></td>
-           <td class="meta"><input [(ngModel)]="a.metas['EE3']" (change)="atualizarAluno(a)"></td>
-           <td class="meta"><input [(ngModel)]="a.metas['EE4']" (change)="atualizarAluno(a)"></td>
-           <td class="meta"><input [(ngModel)]="a.metas['EE5']" (change)="atualizarAluno(a)"></td>
-           <td class="media"><input [(ngModel)]="a.media" (change)="atualizarAluno(a)"></td>
-           <td><button (click)="mediaAluno(a)" name = "calcularMedia"> Media </button></td>
-        </tr>
-        </tbody>
+          <tr *ngFor="let a of alunos">
+            <td>{{a.nome}}</td>
+            <td>{{a.cpf}}</td>
+            <td>{{a.email}}</td>
+            <td class="meta"><input [(ngModel)]="a.metas['EE1']" (change)="atualizarAluno(a)"></td>
+            <td class="meta"><input [(ngModel)]="a.metas['EE2']" (change)="atualizarAluno(a)"></td>
+            <td class="meta"><input [(ngModel)]="a.metas['EE3']" (change)="atualizarAluno(a)"></td>
+            <td class="meta"><input [(ngModel)]="a.metas['EE4']" (change)="atualizarAluno(a)"></td>
+            <td class="meta"><input [(ngModel)]="a.metas['EE5']" (change)="atualizarAluno(a)"></td>
+            <td class="media"><input [(ngModel)]="a.media" (change)="atualizarAluno(a)"></td>
+         </tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><button (click)="mediaAluno()" name = "calcularMedia"> Calcular medias </button></td>
+         </tbody>
       </table>
     </div>
     </table>
