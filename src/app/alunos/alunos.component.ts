@@ -88,7 +88,7 @@ import { keyframes } from '@angular/animations';
     onFileChange (event) {
     const file = event.srcElement.files[0];
     const reader = new FileReader();
-    reader.readAsText(file)
+    reader.readAsText(file);
     reader.onload = (e: any)=> {
       const csv : string = e.target.result;
       this.tratarCsv(csv);
