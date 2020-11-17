@@ -18,10 +18,10 @@ When I upload a new spreadsheet containing my students
 Then I can still see a student with CPF "093"
 And I can see a student with CPF "111"
 
-# Scenario: Registering student with invalid email
-# Given I am at the students page
-# When I try to register a student CPF "123" and email "oi"
-# Then I can see an error message
+Scenario: Registering student with invalid email
+Given I am at the students page
+When I try to register a student with CPF "888" and email "oi"
+Then I cant see student with CPF "888" in the list
 
 # Service
 
@@ -32,11 +32,10 @@ Then The system now stores a student with CPF "552"
 
 Scenario: Registering a student when there's already a student registered, service
 Given The system has already a student with CPF "552" registered
-When I try to register a student with CPF "552"
-Then The system still stores a student with CPF "552"
+When I attempt to register a student with CPF "552"
+Then The system still has a student with CPF "552"
 
-# Scenario: Registering student with invalid email, service
-# Given The system has already a student with CPF "552" registered
-# When I try to register student with CPF "123" and email "oi"
-# Then The system does not store a student with CPF "123"
-# And it still stores a student with CPF "552"
+Scenario: Registering student with invalid email, service
+Given The system has already a student with CPF "552" registered
+When I attempt to register a student with CPF "123" and email "oi"
+And The system does not store a student with CPF "123" and email "oi"
