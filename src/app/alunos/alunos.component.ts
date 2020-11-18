@@ -75,7 +75,7 @@ import { keyframes } from '@angular/animations';
       for (let i = 1; i < paragraph.length; i++){
         let aluno = new Aluno();
         data = paragraph[i].split(';');
-        aluno.nome = data[0];
+        aluno.nome = data[0].replace(/\n/g, '');
         aluno.cpf = data[1];
         aluno.email = data[2];
         for (let j = 3; j < p.length; j++){
