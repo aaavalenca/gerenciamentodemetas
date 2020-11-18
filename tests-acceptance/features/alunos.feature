@@ -13,10 +13,10 @@ Then I can see a student with CPF "093" in the students list
 Scenario: Registering students with spreadsheet when there's already a student registered
 Given I am at the students page
 And I can see a student with CPF "093" in the list of students
-And I cannot see a student with CPF "111" in the students list
+And I cant see a student with CPF "111" in the students list
 When I upload a new spreadsheet containing my students
 Then I can still see a student with CPF "093"
-And I can see a student with CPF "111"
+And I can see a student with CPF "111" in the students list
 
 Scenario: Registering student with invalid email
 Given I am at the students page

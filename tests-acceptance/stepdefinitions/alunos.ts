@@ -69,6 +69,18 @@ async function postStudent(aluno, s) {
     }
 }
 
+async function averageGradeCheck(bool: boolean, cpf: string) {
+    var allstudents : ElementArrayFinder = element.all(by.name('goalstable'));
+    var thisstudent = allstudents.filter(elem => sameCPF(elem,cpf));
+    var studentvalue = thisstudent.all(by.name('media')).getAttribute('value');
+    if (bool){
+        await assertTamanhoEqualArray(studentvalue,0);
+    } else {
+        await assertTamanhoNotEqualArray(studentvalue,0);
+    }
+
+}
+
 defineSupportCode(function ({ Given, When, Then }) {
 
     // GUI
@@ -90,6 +102,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     When(/^I upload a spreadsheet containing my students$/, async () => {
         var fileToUpload = "../planilha.csv";
         await uploadSpreadsheet(fileToUpload);
+        await browser.sleep(3000);
     });
 
     Then(/^I can see a student with CPF "(\d*)" in the students list$/, async (cpf: string) => {
@@ -103,20 +116,12 @@ defineSupportCode(function ({ Given, When, Then }) {
         await assertElementsWithSameCPF(1, cpf);
     });
 
-    Given(/^I cannot see a student with CPF "(\d*)" in the students list$/, async (cpf: string) => {
-        await assertElementsWithSameCPF(0, cpf);
-    });
-
     When(/^I upload a new spreadsheet containing my students$/, async () => {
         var fileToUpload = "../planilha2.csv";
         uploadSpreadsheet(fileToUpload);
     });
 
     Then(/^I can still see a student with CPF "(\d*)"$/, async (cpf: string) => {
-        await assertElementsWithSameCPF(1, cpf);
-    });
-
-    Then(/^I can see a student with CPF "(\d*)"$/, async (cpf: string) => {
         await assertElementsWithSameCPF(1, cpf);
     });
 
@@ -191,8 +196,6 @@ defineSupportCode(function ({ Given, When, Then }) {
 
         // calcmedia.feature
 
-            // 1 Calculating grades from students with all goals evaluated
-
     Given(/^I am at the metas page$/, async () => {
         await browser.get("http://localhost:4200/metas");
         await expect(browser.getTitle()).to.eventually.equal('GerenciamentoDeMetas');
@@ -203,20 +206,6 @@ defineSupportCode(function ({ Given, When, Then }) {
         var samecpfs = allalunos.filter(elem => sameCPF(elem,cpf));
         await assertTamanhoEqual(samecpfs,1);
     });
-
-    Given(/^I can see a student with CPF "(\d*)" in the student list$/, async(cpf) => {
-        await assertElementsWithSameCPF(1,cpf);
-    })
-
-    When (/^I try to remove the student with CPF "(\d*)"$/, async(cpf) => {
-        var allalunos: ElementArrayFinder = element.all(by.name('alunolist'));
-        var samecpfs = allalunos.filter(elem => sameCPF(elem, cpf));
-        await samecpfs.all(by.name('x')).click();
-       })
-
-    Then (/^I cannot see the student with CPF "(\d*)" in the students list$/, async(cpf) => {
-        await assertElementsWithSameCPF(0,cpf);
-    })
 
     When(/^I fill EE1 with "([^\"]*)", EE2 with "([^\"]*)", EE3 with "([^\"]*)", EE4 with "([^\"]*)" and EE5 with "([^\"]*)" for the student with CPF "(\d*)"$/, async (ee1, ee2, ee3, ee4, ee5, cpf) => {
         var allalunos: ElementArrayFinder = element.all(by.name('goalstable'));
@@ -244,17 +233,30 @@ defineSupportCode(function ({ Given, When, Then }) {
     })
 
     Then (/^I can see the average grade of the student with CPF "(\d*)"$/, async(cpf:string) => {
-        var allstudents : ElementArrayFinder = element.all(by.name('goalstable'));
-        var thisstudent = allstudents.filter(elem => sameCPF(elem,cpf));
-        var studentvalue = thisstudent.all(by.name('media')).getAttribute('value');
-        await assertTamanhoNotEqualArray(studentvalue,0)
+        // var allstudents : ElementArrayFinder = element.all(by.name('goalstable'));
+        // var thisstudent = allstudents.filter(elem => sameCPF(elem,cpf));
+        // var studentvalue = thisstudent.all(by.name('media')).getAttribute('value');
+        // await assertTamanhoNotEqualArray(studentvalue,0)
+        await averageGradeCheck(false, cpf);
     })
 
     Then (/^I cannot see the average grade of the student with CPF "(\d*)"$/, async(cpf:string) => {
-        var allstudents : ElementArrayFinder = element.all(by.name('goalstable'));
-        var thisstudent = allstudents.filter(elem => (sameCPF(elem,cpf)));
-        var studentvalue = thisstudent.all(by.name('media')).getAttribute('value');
-        await assertTamanhoEqualArray(studentvalue,0)
+        // var allstudents : ElementArrayFinder = element.all(by.name('goalstable'));
+        // var thisstudent = allstudents.filter(elem => sameCPF(elem,cpf));
+        // var studentvalue = thisstudent.all(by.name('media')).getAttribute('value');
+        // await assertTamanhoEqualArray(studentvalue,0)
+        await averageGradeCheck(true, cpf);
     })
+
+    // GUI
+
+        // remover.feature
+
+    When (/^I try to remove the student with CPF "(\d*)"$/, async(cpf) => {
+        var allalunos: ElementArrayFinder = element.all(by.name('alunolist'));
+        var samecpfs = allalunos.filter(elem => sameCPF(elem, cpf));
+        await samecpfs.all(by.name('x')).click();
+    })    
+
 
 })
