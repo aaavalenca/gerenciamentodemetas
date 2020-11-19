@@ -13,7 +13,7 @@ import { AlunoService } from '../aluno.service';
     constructor(private alunoService: AlunoService) {}
 
     alunos: Aluno[];
-    
+
     atualizarAluno(aluno: Aluno): void {
       this.alunoService.atualizar(aluno).subscribe(
          (a) => { if (a == null) alert("Unexpected fatal error trying to update student information! Please contact the systems administratos."); },
@@ -22,14 +22,20 @@ import { AlunoService } from '../aluno.service';
     }
 
     checkMetas(a: Aluno): Aluno {
-      for (let k in a.metas) {
-        console.log(a.metas);
-        if (a.metas[k] !== "MA" && a.metas[k] !== "MPA" && a.metas[k] !== "MANA"){
-          return null
+      let arrayNotas = ["EE1", "EE2", "EE3", "EE4", "EE5"]
+      let b = false;
+      arrayNotas.forEach(k => {
+        if (a.metas[k] === undefined) {
+          b = true
         }
+        if (a.metas[k] !== "MA" && a.metas[k] !== "MPA" && a.metas[k] !== "MANA") {
+          b = true
       }
+      });
+      if (b) 
+        return null
       return a
-    }
+  }
 
     conteMetas(a: Aluno): any {
       let x: any = {};
@@ -95,6 +101,5 @@ import { AlunoService } from '../aluno.service';
          (msg) => { alert(msg.message); }
       );
     }
-
 
   }
