@@ -18,7 +18,11 @@
  </tr>
  <tr>
     <td><label>e-mail </label></td>
+<<<<<<< HEAD
     <td><input [(ngModel)]="aluno.email" name="emailbox" ></td>
+=======
+    <td><input [(ngModel)]="aluno.email" name="emailbox"></td>
+>>>>>>> 47fc7709099395e45507803c226ecf335d560719
     <td name="msgemailinvalido" *ngIf="emailinvalido">
       Um email válido contém "@"
     </td>
@@ -29,7 +33,7 @@
  <tr>
     <td></td><td></td><td>Ou faça o upload de uma planilha CSV:</td>
  </tr>
- <tr><td></td><td></td><td><input type="file" (change)="onFileChange($event)" multiple="false" accept='.csv'></td></tr>
+ <tr><td></td><td></td><td><input type="file" name="uploadbutton" (change)="onFileChange($event)" multiple="false" accept='.csv'></td></tr>
  </table>
   <table>
  <tr *ngIf="alunos.length > 0">

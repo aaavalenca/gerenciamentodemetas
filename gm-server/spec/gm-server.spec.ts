@@ -63,43 +63,6 @@ describe("O servidor", () => {
             ).catch(e =>
                expect(e).toEqual(null)
             )
- });
-
- it("calcula media de alunos com todas as metas preenchidas", () => {
-   var aluno = {"json":{"nome": "Andre", "cpf" : "093", "email":"aaav@cin.ufpe.br", "metas":{"EE1":"MA","EE2":"MPA","EE3":"MPA","EE4":"MA","EE5":"MA"}}};
-   var resposta = '{"nome":"Andre","cpf":"093","email":"aaav@cin.ufpe.br","metas":{"EE1":"MA","EE2":"MPA","EE3":"MPA","EE4":"MA","EE5":"MA"},"media":"8.40"}';
-
-   return request.post(base_url + "aluno", aluno)
-   .then(body => {
-       expect(body).toEqual({ success: "O aluno foi cadastrado com sucesso" })
-       return request.put(base_url + "aluno/",  )
-                   .then(body => {
-                       expect(body).toEqual('{"success":"O aluno foi deletado com sucesso"}')
-                       return request.get(base_url + "alunos")
-                            .then(body => {
-                               expect(body).toContain(resposta1);
-                               expect(body).not.toContain(resposta2);
-                             });
-                   })
-           })
-   })
-   .catch (e => {
-       expect(e).toEqual(null);
-   })
-})
-               
-
- it("não calcula media de alunos sem todas as metas preenchidas", () => {
-   var aluno = {"json":{"nome": "Andre", "cpf" : "093", "email":"aaav@cin.ufpe.br", "metas":{"EE1":"MA","EE2":"MPA","EE4":"MA","EE5":"MA"}}};
-   var resposta = '{"nome":"Andre","cpf":"093","email":"aaav@cin.ufpe.br","metas":{"EE1":"MA","EE2":"MPA","EE3":"MPA","EE4":"MA","EE5":"MA"},"media":""}';
-
-   var options:any = {method: 'PUT', url: (base_url + "aluno"), body:{nome: "Andre", cpf: "093", email: "aaav"}, json: true};
-   return request(options)
-            .then(body =>
-               expect(body).toEqual({failure: "O aluno não pode ser cadastrado"})
-            ).catch(e =>
-               expect(e).toEqual(null)
-            )
- });
+ })
 
 })

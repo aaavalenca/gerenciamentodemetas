@@ -1,34 +1,41 @@
+# GUI TESTS
+
 Feature: As a professor
          I want to register students
          So that I can manage their learning goals
 
 Scenario: Registering student with non registered CPF
 Given I am at the students page
-Given I cannot see a student with CPF "054" in the students list
-When I try to register the student "Mateus" with CPF "054" and email "ma@cin"
-Then I can see "Mateus" with CPF "054" in the students list
+And I cant see a student with CPF "093" in the students list
+When I upload a spreadsheet containing my students
+Then I can see a student with CPF "093" in the students list
 
-Scenario: Registering student with non registered CPF
+Scenario: Registering students with spreadsheet when there's already a student registered
 Given I am at the students page
-Given I cannot see a student with CPF "683" in the students list
-When I try to register the student "Mari" with CPF "683" and email "m@cin"
-Then I can see "Mari" with CPF "683" in the students list
+And I can see a student with CPF "093" in the list of students
+And I cant see a student with CPF "111" in the students list
+When I upload a new spreadsheet containing my students
+Then I can still see a student with CPF "093"
+And I can see a student with CPF "111" in the students list
 
-Scenario: Registering student with non registered CPF
+Scenario: Registering student with invalid email
 Given I am at the students page
-Given I cannot see a student with CPF "684" in the students list
-When I try to register the student "Lari" with CPF "684" and email "l@cin"
-Then I can see "Lari" with CPF "684" in the students list
+When I try to register a student with CPF "888" and email "oi"
+Then I cant see student with CPF "888" in the list
 
-Scenario: Registering student with non registered CPF
-Given I am at the students page
-Given I cannot see a student with CPF "685" in the students list
-When I try to register the student "Ju" with CPF "685" and email "j@cin"
-Then I can see "Ju" with CPF "685" in the students list
+# Service
 
-Scenario: Registering student with registered CPF
-Given I am at the students page
-Given I can see a student with CPF "683" in the students list
-When I try to register the student "Pedro" with CPF "683" and email "p@cin"
-Then I cannot see "Pedro" with CPF "683" in the students list
-And I can see an error message
+Scenario: Registering students, service
+Given The system has no students with CPF "552" registered
+When I register a student with CPF "552"
+Then The system now stores a student with CPF "552"
+
+Scenario: Registering a student when there's already a student registered, service
+Given The system has already a student with CPF "552" registered
+When I attempt to register a student with CPF "552"
+Then The system still has a student with CPF "552"
+
+Scenario: Registering student with invalid email, service
+Given The system has already a student with CPF "552" registered
+When I attempt to register a student with CPF "123" and email "oi"
+And The system does not store a student with CPF "123" and email "oi"
