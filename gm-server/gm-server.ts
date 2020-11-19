@@ -3,6 +3,7 @@ import bodyParser = require("body-parser");
 
 import {Aluno} from '../common/aluno';
 import {CadastroDeAlunos} from './cadastrodealunos';
+import {CalculoDeMedias} from './calculomedia';
 
 var gmserver = express();
 var cadastro : CadastroDeAlunos = new CadastroDeAlunos();

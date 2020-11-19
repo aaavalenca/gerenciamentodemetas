@@ -1,3 +1,4 @@
+import { equal } from 'assert';
 import { defineSupportCode } from 'cucumber';
 import { browser, $, element, ElementArrayFinder, by, promise, ElementFinder } from 'protractor';
 import request = require("request-promise");

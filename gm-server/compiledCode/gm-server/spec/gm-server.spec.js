@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("request-promise");
 var base_url = "http://localhost:3000/";
-describe("O servidor", () => {
+fdescribe("O servidor", () => {
     var server;
     beforeAll(() => { server = require('../gm-server'); });
     afterAll(() => { server.closeServer(); });

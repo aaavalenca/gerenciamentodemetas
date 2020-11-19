@@ -1,10 +1,10 @@
 # GUI TESTS
 
 Feature: As a professor
-    I wanto to register students
-    So that I can manage their learning goals
+         I want to register students
+         So that I can manage their learning goals
 
-Scenario: Registering students with spreadsheet
+Scenario: Registering student with non registered CPF
 Given I am at the students page
 And I cant see a student with CPF "093" in the students list
 When I upload a spreadsheet containing my students

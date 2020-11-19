@@ -19,18 +19,19 @@ checkAluno(a: Aluno): boolean {
     } else {
         return true;
     }
-  }
-
+}
 
 cpfNaoCadastrado(cpf: string) {
     return !this.alunos.find(a => a.cpf == cpf);
 }
+
 atualizar(aluno: Aluno) {
     var result = this.alunos.find(a => a.cpf == aluno.cpf);
     if (result)
         result.copyFrom(aluno);
     return result;
 }
+
 remover(cpf: string) {
     var result: number = this.alunos.findIndex(a => a.cpf == cpf);
     var tempResult: Aluno = this.alunos[result];

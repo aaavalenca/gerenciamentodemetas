@@ -3,7 +3,7 @@ import { closeServer } from '../gm-server';
 
 var base_url = "http://localhost:3000/";
 
-describe("O servidor", () => {
+fdescribe("O servidor", () => {
   var server:any;
 
   beforeAll(() => {server = require('../gm-server')});
@@ -63,6 +63,6 @@ describe("O servidor", () => {
             ).catch(e =>
                expect(e).toEqual(null)
             )
- });
+ })
 
 })
