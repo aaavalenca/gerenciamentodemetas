@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("request-promise");
 var base_url = "http://localhost:3000/";
-describe("O servidor", () => {
+fdescribe("O servidor", () => {
     var server;
     beforeAll(() => { server = require('../gm-server'); });
     afterAll(() => { server.closeServer(); });
@@ -40,20 +40,6 @@ describe("O servidor", () => {
     });
     it("nao cadastra alunos com email invalido", () => {
         var options = { method: 'POST', url: (base_url + "aluno"), body: { nome: "Andre", cpf: "093", email: "aaav" }, json: true };
-        return request(options)
-            .then(body => expect(body).toEqual({ failure: "O aluno não pode ser cadastrado" })).catch(e => expect(e).toEqual(null));
-    });
-    it("calcula media de alunos com todas as metas preenchidas", () => {
-        var aluno = { "json": { "nome": "Andre", "cpf": "093", "email": "aaav@cin.ufpe.br", "metas": { "EE1": "MA", "EE2": "MPA", "EE3": "MPA", "EE4": "MA", "EE5": "MA" } } };
-        var resposta = '{"nome":"Andre","cpf":"093","email":"aaav@cin.ufpe.br","metas":{"EE1":"MA","EE2":"MPA","EE3":"MPA","EE4":"MA","EE5":"MA"},"media":"8.40"}';
-        var options = { method: 'PUT', url: (base_url + "aluno"), body: { nome: "Andre", cpf: "093", email: "aaav" }, json: true };
-        return request(options)
-            .then(body => expect(body).toEqual({ failure: "O aluno não pode ser cadastrado" })).catch(e => expect(e).toEqual(null));
-    });
-    it("não calcula media de alunos sem todas as metas preenchidas", () => {
-        var aluno = { "json": { "nome": "Andre", "cpf": "093", "email": "aaav@cin.ufpe.br", "metas": { "EE1": "MA", "EE2": "MPA", "EE4": "MA", "EE5": "MA" } } };
-        var resposta = '{"nome":"Andre","cpf":"093","email":"aaav@cin.ufpe.br","metas":{"EE1":"MA","EE2":"MPA","EE3":"MPA","EE4":"MA","EE5":"MA"},"media":""}';
-        var options = { method: 'PUT', url: (base_url + "aluno"), body: { nome: "Andre", cpf: "093", email: "aaav" }, json: true };
         return request(options)
             .then(body => expect(body).toEqual({ failure: "O aluno não pode ser cadastrado" })).catch(e => expect(e).toEqual(null));
     });

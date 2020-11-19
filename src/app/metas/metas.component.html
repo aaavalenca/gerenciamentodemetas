@@ -1,38 +1,3 @@
-<table>
-<<<<<<< HEAD
-   <div class="table-wrapper">
-      <table class="fl-table">
-          <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">CPF</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">EE1</th>
-            <th scope="col">EE2</th>
-            <th scope="col">EE3</th>
-            <th scope="col">EE4</th>
-            <th scope="col">EE5</th>
-            <th scope="col">Média</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let a of alunos" name="goalstable">
-            <td>{{a.nome}}</td>
-            <td name="cpflist">{{a.cpf}}</td>
-            <td>{{a.email}}</td>
-            <td class="meta"><input name="EE1" [(ngModel)]="a.metas['EE1']" (change)="atualizarAluno(a)"></td>
-            <td class="meta"><input name="EE2" [(ngModel)]="a.metas['EE2']" (change)="atualizarAluno(a)"></td>
-            <td class="meta"><input name="EE3" [(ngModel)]="a.metas['EE3']" (change)="atualizarAluno(a)"></td>
-            <td class="meta"><input name="EE4" [(ngModel)]="a.metas['EE4']" (change)="atualizarAluno(a)"></td>
-            <td class="meta"><input name="EE5" [(ngModel)]="a.metas['EE5']" (change)="atualizarAluno(a)"></td>
-            <td class="meta"><input name="media"[(ngModel)]="a.media" (change)="atualizarAluno(a)"></td>
-         </tr>
-         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><button (click)="mediaAluno()" name = "calcularMedia"> Calcular medias </button></td>
-         </tbody>
-      </table>
-    </div>
-    </table>
-=======
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -72,5 +37,3 @@
       </tbody>
     </table>
   </div>
-</table>
->>>>>>> 47fc7709099395e45507803c226ecf335d560719
