@@ -259,5 +259,28 @@ defineSupportCode(function ({ Given, When, Then }) {
         await samecpfs.all(by.name('x')).click();
     })    
 
+    Given(/^The system has already a student with CPF "(\d*)" and grades EE1 with "([^\"])", EE2 with "([^\"])", EE3 with "([^\"])", EE4 with "([^\"])" and EE5 with "([^\"]*)"$/, async (cpf, ee1, ee2, ee3, ee4, ee5) => {
+        await request.get(base_url + "alunos")
+            .then(body =>
+                expect(body.includes(`"metas":{"EE1":"${ee1}","EE2":"${ee2}","EE3":"${ee3}","EE4":"${ee4}","EE5":"${ee5}"}` && `"cpf":"${cpf}"`)).to.equal(true)
+                );
+    })
+
+    Then(/^The system has the average grade of the student with CPF "(\d*)"$/, async (cpf) => {
+        await request.get(base_url + "alunos")
+            .then(body => {
+                expect(body.includes(`"cpf":"${cpf}"`)).to.equal(true);
+                expect(body.includes(`"media":""`)).to.equal(false);
+            });
+    })
+
+    Then(/^The system doesnt have the average grade of the student with CPF "(\d*)"$/, async (cpf) => {
+        await request.get(base_url + "alunos")
+            .then(body => {
+                expect(body.includes(`"cpf":"${cpf}"`)).to.equal(true)
+                console.log(body[0])
+                expect(body[0](`"cpf":"${cpf}"`).includes(`"cpf":"${cpf}"`)).to.equal(true)
+            });
+    })
 
 })

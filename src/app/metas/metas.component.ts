@@ -85,6 +85,7 @@ import { AlunoService } from '../aluno.service';
       }
       return mediaFinal.toFixed(2);
     }
+    return "";
     }
 
     mediaAluno() : void {
