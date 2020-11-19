@@ -96,6 +96,7 @@ checkMetas(a: Aluno): boolean {
       }
       return mediaFinal.toFixed(2);
     }
+    return "";
     }
 
     mediaAluno() : void {

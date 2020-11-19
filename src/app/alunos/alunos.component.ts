@@ -78,6 +78,7 @@ import { keyframes } from '@angular/animations';
         aluno.nome = data[0].replace(/\n/g, '');
         aluno.cpf = data[1];
         aluno.email = data[2];
+        aluno.media = "";
         for (let j = 3; j < p.length; j++){
           aluno.metas[p[j]] = data[j];
         }
